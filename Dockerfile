@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install -y \
     zip unzip
 
 RUN a2enmod rewrite
+RUN mkdir -p /var/www/html/output && chmod -R 777 /var/www/html/output
 WORKDIR /var/www/html
 COPY . /var/www/html
 RUN chmod -R 755 /var/www/html
