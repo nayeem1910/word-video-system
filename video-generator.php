@@ -26,6 +26,14 @@ file_put_contents("text.txt", "{$entry['word']}\n{$entry['definition_en']}\n{$en
 
 $bgm = selectBGM(strtolower($entry['word']));
 $cmd = "ffmpeg -loop 1 -i image.jpg -i $bgm -vf drawtext='text=text.txt:fontcolor=white:fontsize=24:x=(w-text_w)/2:y=(h-text_h)/2:box=1:boxcolor=black@0.5:boxborderw=5' -shortest -y output/today.mp4";
-exec($cmd);
-echo "Video created for {$entry['word']}";
+
+$output = [];
+$return_var = 0;
+exec($cmd . " 2>&1", $output, $return_var);
+
+echo "<pre>";
+echo "FFmpeg Command:\n$cmd\n\n";
+echo "Output:\n" . implode("\n", $output) . "\n\n";
+echo "Exit Code: $return_var";
+echo "</pre>";
 ?>
