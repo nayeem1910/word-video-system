@@ -2,7 +2,7 @@
 
 
 // Fix output folder permission
-shell_exec("chmod -R 777 output");
+shell_exec("chmod -R 777 tmp");
 
 // Your existing code...
 

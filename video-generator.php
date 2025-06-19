@@ -2,7 +2,7 @@
 
 
 // Fix output folder permission
-shell_exec("chmod -R 777 output");
+shell_exec("chmod -R 777 tmp");
 
 // Your existing code...
 
@@ -33,7 +33,7 @@ file_put_contents("image.jpg", file_get_contents($imageUrl));
 file_put_contents("text.txt", "{$entry['word']}\n{$entry['definition_en']}\n{$entry['sentence_en']}\n{$entry['definition_bn']}\n{$entry['sentence_bn']}");
 
 $bgm = selectBGM(strtolower($entry['word']));
-$cmd = "ffmpeg -loop 1 -i image.jpg -i $bgm -vf drawtext='text=text.txt:fontcolor=white:fontsize=24:x=(w-text_w)/2:y=(h-text_h)/2:box=1:boxcolor=black@0.5:boxborderw=5' -shortest -y output/today.mp4";
+$cmd = "ffmpeg -loop 1 -i image.jpg -i $bgm -vf drawtext='text=text.txt:fontcolor=white:fontsize=24:x=(w-text_w)/2:y=(h-text_h)/2:box=1:boxcolor=black@0.5:boxborderw=5' -shortest -y tmp/today.mp4";
 
 $output = [];
 $return_var = 0;
