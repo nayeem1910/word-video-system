@@ -1,9 +1,16 @@
-services:
+
+
+
+
+    services:
   - type: web
-    name: word-video-render
+    name: word-video-system
     env: docker
+    buildCommand: |
+      mkdir -p output
+      chmod -R 777 output
+    startCommand: apache2-foreground
+    envVars:
+      - key: PORT
+        value: 10000
     plan: free
-    region: singapore
-    dockerfilePath: Dockerfile
-    buildCommand: ""
-    startCommand: "php cron.php"
