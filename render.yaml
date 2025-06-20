@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: word-video-generator
+    env: docker
+    plan: free
+    dockerfilePath: Dockerfile
+    autoDeploy: false
+    buildFilter:
+      paths:
+        - Dockerfile
+        - render.yaml
